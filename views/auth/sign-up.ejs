@@ -15,6 +15,15 @@
       <input type="password" name="password" id="password" />
       <label for="confirmPassword">Confirm Password:</label>
       <input type="password" name="confirmPassword" id="confirmPassword" />
+
+      <label for="role">Type Of User</label>
+      <select name="role" id="role">
+         <option value="" disabled selected>Select an type...</option>
+        <% for (let role of roles) { %>
+            <option value="<%= role  %>"><%= role  %></option>
+        <% } %>
+      </select>
+
       <button type="submit">Sign up</button>
     </form>
   </body>
