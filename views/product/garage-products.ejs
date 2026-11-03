@@ -10,6 +10,7 @@
 
     <% for (let product of myProducts) { %>
         <p><%= product.name %></p>
+        <a href="/products/<%= product._id  %>">Edit Product</a>
     <% } %>
 
   </body>
