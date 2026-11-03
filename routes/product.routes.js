@@ -31,4 +31,10 @@ router.get("/", async (req, res) => {
   res.render("product/products-list.ejs", { products: allProducts });
 });
 
+router.get("/my-products", async (req, res) => {
+  const myProducts = await Product.find({ owner: req.session.user._id });
+
+  res.render("product/garage-products.ejs", { myProducts: myProducts });
+});
+
 module.exports = router;
