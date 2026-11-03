@@ -17,4 +17,10 @@ router.post("/", async (req, res) => {
   res.redirect("/categories");
 });
 
+router.get("/", async (req, res) => {
+  const allCategories = await Category.find();
+
+  res.render("category/categories-list.ejs", { categories: allCategories });
+});
+
 module.exports = router;
