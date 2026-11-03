@@ -24,4 +24,11 @@ router.post("/", async (req, res) => {
   res.redirect("/products");
 });
 
+// View Routes
+router.get("/", async (req, res) => {
+  const allProducts = await Product.find().populate("owner categoryId");
+
+  res.render("product/products-list.ejs", { products: allProducts });
+});
+
 module.exports = router;

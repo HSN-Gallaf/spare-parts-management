@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Spare Parts</title>
+  </head>
+  <body>
+    <%- include('../partials/navbar') %>
+
+    <h1>All Spare Parts</h1>
+
+    <ul>
+    <% for (let product of products) { %>
+        <p><%=product.name  %></p>
+        <p><%=product.price  %></p>
+        <p><%=product.imgeUrl  %></p>
+        <p><%=product.status  %></p>
+        <p><%=product.owner.username  %></p>
+        <p><%=product.categoryId.name  %></p>
+        <p>-------------------</p>
+    <% } %>
+    </ul>
+  </body>
+</html>
