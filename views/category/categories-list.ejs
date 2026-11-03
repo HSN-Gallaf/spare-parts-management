@@ -11,8 +11,12 @@
     <ul>
     <% for (let category of categories) { %>
         <li>
-        <%=category.name  %>
-        <%=category.description  %>
+          <%=category.name  %>
+          <%=category.description  %>
+        
+          <form action="categories/<%= category._id %>?_method=DELETE" method="POST">
+              <button type="submit">Delete Category</button>
+          </form>
         </li>
     <% } %>
     </ul>

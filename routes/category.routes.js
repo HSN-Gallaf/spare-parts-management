@@ -23,4 +23,9 @@ router.get("/", async (req, res) => {
   res.render("category/categories-list.ejs", { categories: allCategories });
 });
 
+router.delete("/:categoryId", async (req, res) => {
+  await Category.findByIdAndDelete(req.params.categoryId);
+  res.redirect("/categories");
+});
+
 module.exports = router;
