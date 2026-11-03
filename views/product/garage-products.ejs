@@ -11,6 +11,10 @@
     <% for (let product of myProducts) { %>
         <p><%= product.name %></p>
         <a href="/products/<%= product._id  %>">Edit Product</a>
+
+        <form action="/products/<%=product._id  %>?_method=DELETE" method="POST">
+            <button type="submit">Delete Product</button>
+        </form>
     <% } %>
 
   </body>
