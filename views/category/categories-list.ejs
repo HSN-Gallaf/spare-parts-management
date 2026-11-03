@@ -13,7 +13,8 @@
         <li>
           <%=category.name  %>
           <%=category.description  %>
-        
+          <a href="/categories/<%=category._id %>">Edit Category</a>
+          
           <form action="categories/<%= category._id %>?_method=DELETE" method="POST">
               <button type="submit">Delete Category</button>
           </form>
