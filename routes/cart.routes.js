@@ -21,4 +21,14 @@ router.post("/:productId/add-to-cart", isSignedIn, async (req, res) => {
   res.redirect("/products");
 });
 
+router.delete("/:productId", isSignedIn, async (req, res) => {
+  const userCart = await Cart.findOne({ owner: req.session.user._id });
+
+  await Cart.findByIdAndUpdate(userCart._id, {
+    $pull: { cartProducts: req.params.productId },
+  });
+
+  res.redirect("/cart");
+});
+
 module.exports = router;

@@ -10,6 +10,9 @@
 
     <% for (let product of cart.cartProducts) { %>
         <%=product.name  %>
+        <form action="/cart/<%= product._id %>?_method=DELETE" method="POST">
+            <button type="submit">Remove From Cart</button>
+        </form>
     <% } %>
 </body>
 </html>
