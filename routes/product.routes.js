@@ -67,7 +67,11 @@ router.put("/:productId", isSignedIn, isGarageOrAdmin, async (req, res) => {
 });
 
 router.delete("/:productId", isSignedIn, isGarageOrAdmin, async (req, res) => {
-  await Product.findByIdAndDelete(req.params.productId);
+  const foundProduct = await Product.findByIdAndDelete(req.params.productId);
+
+  if (!foundProduct.owner.equals(req.session.user._id)) {
+    res.render("You are not allowed to delete this Product");
+  }
 
   res.redirect("/products/my-products");
 });

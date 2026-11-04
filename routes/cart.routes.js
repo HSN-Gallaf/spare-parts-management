@@ -20,6 +20,11 @@ router.post("/:productId/add-to-cart", isSignedIn, async (req, res) => {
   if (foundProduct) {
     return res.send("Product Already In Cart");
   }
+
+  if (!userCart.owner.equals(req.session.user._id)) {
+    res.render("You are not allowed to add to this cart");
+  }
+
   await Cart.findByIdAndUpdate(userCart._id, {
     $push: { cartProducts: req.params.productId },
   });
@@ -29,6 +34,10 @@ router.post("/:productId/add-to-cart", isSignedIn, async (req, res) => {
 
 router.delete("/:productId", isSignedIn, async (req, res) => {
   const userCart = await Cart.findOne({ owner: req.session.user._id });
+
+  if (!userCart.owner.equals(req.session.user._id)) {
+    res.render("You are not allowed to delete this Product");
+  }
 
   await Cart.findByIdAndUpdate(userCart._id, {
     $pull: { cartProducts: req.params.productId },
