@@ -18,6 +18,11 @@
         <p><%=product.status  %></p>
         <p><%=product.owner.username  %></p>
         <p><%=product.categoryId.name  %></p>
+
+        <form action="/cart/<%=product._id  %>/add-to-cart" method="POST">
+          <button type="submit">Add To Cart</button>
+        </form>
+        
         <p>-------------------</p>
     <% } %>
     </ul>

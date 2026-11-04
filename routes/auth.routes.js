@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User.js");
 const bcrypt = require("bcrypt");
+const Cart = require("../models/Cart.js");
 
 // Sign up routes
 router.get("/sign-up", (req, res) => {
@@ -26,6 +27,11 @@ router.post("/sign-up", async (req, res) => {
   // validation logic
 
   const user = await User.create(req.body);
+
+  const cart = await Cart.create({
+    owner: user._id,
+  });
+
   res.redirect("/auth/sign-in");
 });
 
