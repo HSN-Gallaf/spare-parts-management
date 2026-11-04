@@ -23,7 +23,8 @@
       <select name="categoryId" id="categoryId">
          <option value="" disabled selected>Select an option...</option>
         <% for (let category of categories) { %>
-            <option value="<%= category._id  %>"><%= category.name  %></option>
+          
+            <option value="<%= category._id  %>" <% if (product.categoryId.name === category.name) { %>selected<% } %>><%= category.name  %></option>
         <% } %>
       </select>
 
