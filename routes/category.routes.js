@@ -1,13 +1,14 @@
 const isSignedIn = require("../middleware/is-signed-in");
+const isAdmin = require("../middleware/is-admin");
 const Category = require("../models/Category");
 
 const router = require("express").Router();
 
-router.get("/new", isSignedIn, (req, res) => {
+router.get("/new", isSignedIn, isAdmin, (req, res) => {
   res.render("category/add-category.ejs");
 });
 
-router.post("/", isSignedIn, async (req, res) => {
+router.post("/", isSignedIn, isAdmin, async (req, res) => {
   const { name, description } = req.body;
 
   await Category.create({
@@ -18,24 +19,24 @@ router.post("/", isSignedIn, async (req, res) => {
   res.redirect("/categories");
 });
 
-router.get("/", isSignedIn, async (req, res) => {
+router.get("/", isSignedIn, isAdmin, async (req, res) => {
   const allCategories = await Category.find();
 
   res.render("category/categories-list.ejs", { categories: allCategories });
 });
 
-router.delete("/:categoryId", isSignedIn, async (req, res) => {
+router.delete("/:categoryId", isSignedIn, isAdmin, async (req, res) => {
   await Category.findByIdAndDelete(req.params.categoryId);
   res.redirect("/categories");
 });
 
-router.get("/:categoryId", isSignedIn, async (req, res) => {
+router.get("/:categoryId", isSignedIn, isAdmin, async (req, res) => {
   const foundCategory = await Category.findById(req.params.categoryId);
 
   res.render("category/edit-category.ejs", { category: foundCategory });
 });
 
-router.put("/:categoryId", isSignedIn, async (req, res) => {
+router.put("/:categoryId", isSignedIn, isAdmin, async (req, res) => {
   const { name, description } = req.body;
   await Category.findByIdAndUpdate(req.params.categoryId, {
     name: name,

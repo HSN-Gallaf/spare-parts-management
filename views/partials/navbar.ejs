@@ -4,10 +4,16 @@
     <% if (user){ %>
     <a href="/auth/sign-out">Logout</a>
     <a href="/products">Spare Parts</a>
+    <a href="/cart">My Cart</a>
+    <% if (user.role === 'garage' || user.role === 'admin') { %>
     <a href="/products/new">Add Spare Part</a>
     <a href="/products/my-products">My Products</a>
+    <% } %>
+
+    <% if (user.role === 'admin') { %>
     <a href="/categories">Categories</a>
     <a href="/categories/new">Add Categories</a>
+    <% } %>
     <% } else{ %>
     <a href="/auth/sign-up">Sign up</a>
     <a href="/auth/sign-in">Login</a>
