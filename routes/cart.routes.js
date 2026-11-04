@@ -13,11 +13,12 @@ router.get("/", isSignedIn, async (req, res) => {
 
 router.post("/:productId/add-to-cart", isSignedIn, async (req, res) => {
   const userCart = await Cart.findOne({ owner: req.session.user._id });
-  const foundProduct = await Cart.findOne({
-    cartProducts: req.params.productId,
-  });
 
-  if (foundProduct) {
+  const foundProductId = await userCart.cartProducts.find(
+    (product) => product._id.toString() === req.params.productId,
+  );
+
+  if (foundProductId) {
     return res.send("Product Already In Cart");
   }
 
