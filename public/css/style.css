@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0 ;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Roboto", sans-serif;
+    background-color: #F4F7FF;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.navbar {
+    background-color: white;
+    width: 100%;
+    height: 40px;
+}
+
+.main-section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+
+.title-section h1 {
+   margin-bottom: 0 !important;
+   color: #1E3A5F;
+   font-weight: 700;
+}
+
+.left-side {
+    width: 50%;
+}
+
+.left-side img {
+    width: 100%;
+    height: 97%;
+    border-radius: 20px ;
+    margin: 10px 0 0 10px;
+    object-fit: cover;
+}
+
+.right-side {
+    flex-direction: row;
+    width: 50%;
+    padding: 130px 50px 70px 70px;
+}
+
+.title-section {
+    margin-left: 65px;
+}
+
+.right-side h1 {
+    margin-bottom: 30px;
+}
+
+.right-side p {
+    font-weight: 600;
+    text-decoration: none;
+}
+.right-side a:hover {
+    color: #1D4ED8;
+    text-decoration: underline;
+}
+
+.right-side form {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 80%;
+    gap: 15px;
+    margin: 30px auto; 
+}
+
+.right-side option {
+    border-bottom: 1px solid #9da0a8; /* Divider lines between options */
+    color: #374151;
+    cursor: pointer;
+}
+
+.right-side input,
+.right-side select,
+.right-side button {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.right-side input,
+.right-side select {
+    border: 1px solid #CBD5E1;
+    background-color: #FFFFFF;
+    color: #374151;
+}
+
+.right-side input:focus,
+.right-side select:focus {
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.right-side input::placeholder {
+    color: #94A3B8;
+}
+
+.right-side button:hover {
+    background-color: #1D4ED8;
+    border-color: #1D4ED8;
+}
+
+#password-section {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#password-section input {
+    flex-grow: 2;
+    min-width: 0;
+}
+
+.footer-section {
+    display: grid;
+}
+
+.footer-section hr {
+  border: none;
+  height: 1px;
+  width: 70%;
+  background-color: #CBD5E1;
+  margin: 30px auto; 
+}
+
+.footer-section p {
+  margin: 10px auto; 
+}
