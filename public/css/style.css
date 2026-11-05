@@ -22,10 +22,74 @@ body {
     height: 100%;
 }
 
-.navbar {
-    background-color: white;
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F4F7FF;
     width: 100%;
-    height: 40px;
+    height: 70px;
+    box-shadow: 0 3px 8px rgba(30, 58, 95, 0.12);
+    padding: 0 10px;
+
+}
+
+.left-nav {
+    margin-left: 30px;
+}
+
+.right-nav {
+    margin-right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.left-nav button {
+    background-color: #FFFFFF;
+    border: 1px solid #DBEAFE;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(30, 58, 95, 0.10);
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+
+.left-nav button:hover {
+    background-color: #DBEAFE;
+    box-shadow: 0 4px 8px rgba(30, 58, 95, 0.15);
+}
+
+.left-nav a {
+    color: #1E3A5F;
+    text-decoration: none;
+}
+
+.left-nav button a {
+    font-weight: 500;
+}
+
+#nav-brand {
+    margin-right: 50px;
+    font-size: 20px;
+    color: #1E3A5F;
+}
+
+.right-nav img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+    margin: 10px;
+}
+
+.right-nav img:hover {
+    transform: scale(1.1);
+}
+
+.right-nav a {
+    text-decoration: none;
 }
 
 .main-section {
