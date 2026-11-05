@@ -119,12 +119,16 @@ body {
     border-color: #1D4ED8;
 }
 
+#password-lable, 
 #password-section {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
+    gap: 20px; 
     width: 100%;
-    justify-content: space-between;
+}
+
+#password-lable label,
+#password-section .form-control {
+    flex: 1; 
 }
 
 #password-section input {
