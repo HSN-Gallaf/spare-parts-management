@@ -13,27 +13,29 @@
   </head>
   <body>
     <nav>
-        <div class="left-nav">
-            <a href="/" id="nav-brand"><strong>Spare Part Shop</strong></a>
-            <% if (user){ %>
-                <button>
-                <a  href="/products">Spare Parts</a>
-                </button>
+    <!-- Left Section: Always contains the brand, and conditionally contains links -->
+    <div class="left-nav">
+        <a href="/" id="nav-brand"><strong>Spare Part Shop</strong></a>
+        <% if (user){ %>
+            <a href="/products"><button class="nav-btn">Spare Parts</button></a>
             <% if (user.role === 'admin') { %>
-                <button>
-                <a href="/categories">Categories</a>
-                </button>
+                <a href="/categories"><button class="nav-btn">Categories</button></a>
             <% } %>
-        </div>
+        <% } %>
+    </div>
 
-        <div class="right-nav">
+    <!-- Right Section: Dynamically handles either action state -->
+    <div class="right-nav">
+        <% if (user){ %>
             <a href="/cart"><img id="cart-icon" src="/main/cart-icon.png" alt="Cart Button"></a>
             <a href="/auth/sign-out"><img id="logout-icon" src="/main/logout-icon.png" alt="Logout Button"></a>
-        </div>
-        <% } else{ %>
-            <a href="/auth/sign-up">Sign up</a>
-            <a href="/auth/sign-in">Login</a>
+        <% } else { %>
+            <div class="signin-nav">
+                <a href="/auth/sign-in" id="signin-a"><button class="nav-btn">Login</button></a>
+            </div>
         <% } %>
-    </nav>
+    </div>
+</nav>
+
   </body>
 </html>

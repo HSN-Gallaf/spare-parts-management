@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Home</title>
-</head>
-<body>
+  </head>
+  <body>
     <%- include('./partials/navbar') %>
 
-    <h1>Welcome to my Website</h1>
-    
-</body>
+    <div class="main-container">
+      <div class="hero-section">
+        <div class="hero-content">
+          <p class="hero-title">Your Trusted</p>
+          <p class="hero-title">Spare Part Store</p>
+          <p id="hero-description">
+            Find high quality spare parts for your needs at the best prices
+          </p>
+          <button class="btn btn-primary">
+            <a href="/products">Browse Spare Parts</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
