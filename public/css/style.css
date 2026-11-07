@@ -307,19 +307,13 @@ nav {
 }
 
 .add-product-btn {
-    background-color: #2563EB;
-    border: 1px solid #2563EB;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
     text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
-.add-product-btn:hover {
-    background-color: #1D4ED8;
-    color: white;
+.product-card button {
+    width: 100%;
+    padding: 10px;
 }
 
 .cards-container {
@@ -387,8 +381,6 @@ nav {
 .product-card button {
     width: 100%;
     padding: 10px;
-    background-color: #2563EB;
-    border: 1px solid #2563EB;
     border-radius: 5px;
 }
 
@@ -404,3 +396,107 @@ nav {
     font-size: 18px;
 }
 
+/* My Products Page */
+
+.my-products-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px auto;
+    width: 95%;
+}
+
+.my-products-header {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.my-products-header h1 {
+    color: #1E3A5F;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.my-products-header p {
+    color: #64748B;
+}
+
+.my-products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.my-product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 350px;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(30, 58, 95, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.my-product-card img {
+    width: 230px;
+    height: 200px;
+    margin: 5px 0 15px;
+    object-fit: contain;
+}
+
+.my-product-card h3 {
+    color: #1E3A5F;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.product-actions a,
+.product-actions button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.product-actions form {
+    width: 100%;
+}
+
+.edit-product-btn:hover {
+    background-color: #1D4ED8;
+    color: white;
+}
+
+.delete-product-btn:hover {
+    background-color: #B91C1C;
+    border-color: #B91C1C;
+}
+
+.my-products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.add-product-btn {
+    text-decoration: none;
+    white-space: nowrap;
+}

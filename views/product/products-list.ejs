@@ -29,7 +29,7 @@
                 </p>
             </div>
             <% if (user.role === 'admin' || user.role === 'garage') { %>
-                <a href="/products/new" class="add-product-btn">
+                <a href="/products/new" class="btn btn-primary add-product-btn">
                     + Add New Product
                 </a>
             <% } %>
@@ -54,7 +54,7 @@
 
                         <p class="product-category">
                             Category:
-                            <%= product.categoryId ? product.categoryId.name : 'Uncategorized' %>
+                            <%= product.categoryId.name %>
                         </p>
 
                         <p class="product-status">

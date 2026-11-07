@@ -1,21 +1,77 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
     <title>My Products</title>
-  </head>
-  <body>
-    <h1>My Products</h1>
+</head>
 
-    <% for (let product of myProducts) { %>
-        <p><%= product.name %></p>
-        <a href="/products/<%= product._id  %>">Edit Product</a>
+<body>
 
-        <form action="/products/<%=product._id  %>?_method=DELETE" method="POST">
-            <button type="submit">Delete Product</button>
-        </form>
-    <% } %>
+    <%- include('../partials/navbar') %>
 
-  </body>
+        <div class="my-products-container">
+
+          <div class="my-products-header">
+            <div>
+                <h1>My Products</h1>
+                <p>Manage your listed spare parts.</p>
+            </div>
+
+            <a href="/products/new" class="btn btn-primary add-product-btn">
+                + Add New Product
+            </a>
+          </div>
+
+        <div class="my-products-grid">
+
+            <% if (myProducts.length > 0) { %>
+                <% for (let product of myProducts) { %>
+                    <div class="my-product-card">
+                        <img
+                            src="<%= product.imgeUrl || '/products/images.jpg' %>"
+                            alt="<%= product.name %>"
+                        />
+                        <h3><%= product.name %></h3>
+                        <div class="product-actions">
+
+                            <a href="/products/<%= product._id %>" class="btn btn-primary">
+                                Edit Product
+                            </a>
+
+                            <form
+                                action="/products/<%= product._id %>?_method=DELETE"
+                                method="POST"
+                            >
+                                <button
+                                    type="submit"
+                                    class="btn btn-danger"
+                                >
+                                    Delete Product
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+                <% } %>
+            <% } else { %>
+                <p class="no-products ">
+                    You haven't added any products yet.
+                </p>
+            <% } %>
+        </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
