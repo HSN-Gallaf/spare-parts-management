@@ -1,30 +1,81 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
     <title>All Spare Parts</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <%- include('../partials/navbar') %>
 
-    <h1>All Spare Parts</h1>
+    <div class="products-container">
+        <div class="products-header">
+            <div>
+                <h1>Spare Parts</h1>
+                <p class="products-description">
+                    Explore our available spare parts.
+                </p>
+            </div>
+            <% if (user.role === 'admin' || user.role === 'garage') { %>
+                <a href="/products/new" class="add-product-btn">
+                    + Add New Product
+                </a>
+            <% } %>
+        </div>
 
-    <ul>
-    <% for (let product of products) { %>
-        <p><%=product.name  %></p>
-        <p><%=product.price  %></p>
-        <p><%=product.imgeUrl  %></p>
-        <p><%=product.status  %></p>
-        <p><%=product.owner.username  %></p>
-        <p><%=product.categoryId.name  %></p>
+        <div class="cards-container">
+            <% if (products.length > 0) { %>
+                <% for (let product of products) { %>
+                    <div class="product-card">
+                        <img
+                            src="<%= product.imgeUrl || '/products/images.jpg' %>"
+                            alt="<%= product.name %>"
+                        />
 
-        <form action="/cart/<%=product._id  %>/add-to-cart" method="POST">
-          <button type="submit">Add To Cart</button>
-        </form>
-        
-        <p>-------------------</p>
-    <% } %>
-    </ul>
-  </body>
+                        <p class="product-name">
+                            <%= product.name %>
+                        </p>
+
+                        <p class="product-price">
+                            <%= product.price %>BD
+                        </p>
+
+                        <p class="product-category">
+                            Category:
+                            <%= product.categoryId ? product.categoryId.name : 'Uncategorized' %>
+                        </p>
+
+                        <p class="product-status">
+                            Status: <%= product.status %>
+                        </p>
+
+                        <form action="/cart/<%= product._id %>/add-to-cart" method="POST">
+                            <button class="btn btn-primary" type="submit">
+                                Add To Cart
+                            </button>
+                        </form>
+
+                    </div>
+                <% } %>
+            <% } else { %>
+                <p class="no-products">
+                    No spare parts available at the moment.
+                </p>
+            <% } %>
+        </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
