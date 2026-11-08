@@ -4,10 +4,6 @@ const Category = require("../models/Category");
 
 const router = require("express").Router();
 
-router.get("/new", isSignedIn, isAdmin, (req, res) => {
-  res.render("category/add-category.ejs");
-});
-
 router.post("/", isSignedIn, isAdmin, async (req, res) => {
   const { name, description } = req.body;
 
