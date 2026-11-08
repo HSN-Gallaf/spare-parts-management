@@ -1,18 +1,61 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
     <title>Cart Spare Parts</title>
 </head>
 <body>
-    <h1>Cart Spare Parts</h1>
 
-    <% for (let product of cart.cartProducts) { %>
-        <%=product.name  %>
-        <form action="/cart/<%= product._id %>?_method=DELETE" method="POST">
-            <button type="submit">Remove From Cart</button>
-        </form>
-    <% } %>
+    <%- include('../partials/navbar') %>
+
+    <div class="cart-container">
+        <div class="cart-header">
+            <h1>My Cart</h1>
+            <p class="cart-description">
+                Review the spare parts you have added to your cart.
+            </p>
+        </div>
+        <div class="cart-grid">
+            <% if (cart.cartProducts.length > 0) { %>
+                <% for (let product of cart.cartProducts) { %>
+                    <div class="cart-card">
+                        <img
+                            src="<%= product.imgeUrl || '/products/images.jpg' %>"
+                            alt="<%= product.name %>"
+                        />
+                        <p class="cart-product-name">
+                            <%= product.name %>
+                        </p>
+                        <form
+                            action="/cart/<%= product._id %>?_method=DELETE"
+                            method="POST"
+                        >
+                            <button type="submit" class="btn btn-danger">
+                                Remove From Cart
+                            </button>
+                        </form>
+                    </div>
+                <% } %>
+            <% } else { %>
+                <p class="no-cart-products">
+                    Your cart is currently empty.
+                </p>
+            <% } %>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

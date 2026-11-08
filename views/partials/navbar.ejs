@@ -13,7 +13,6 @@
   </head>
   <body>
     <nav>
-    <!-- Left Section: Always contains the brand, and conditionally contains links -->
     <div class="left-nav">
         <a href="/" id="nav-brand"><strong>Spare Part Shop</strong></a>
         <% if (user){ %>
@@ -21,10 +20,12 @@
             <% if (user.role === 'admin') { %>
                 <a href="/categories"><button class="nav-btn">Categories</button></a>
             <% } %>
+            <% if (user.role === 'admin' || user.role === 'garage') { %>
+                <a href="/products/my-products"><button class="nav-btn">My Spares</button></a>
+            <% } %>
         <% } %>
     </div>
 
-    <!-- Right Section: Dynamically handles either action state -->
     <div class="right-nav">
         <% if (user){ %>
             <a href="/cart"><img id="cart-icon" src="/main/cart-icon.png" alt="Cart Button"></a>
