@@ -6,12 +6,6 @@ const Product = require("../models/Product");
 const router = require("express").Router();
 
 // Create Routes
-router.get("/new", isSignedIn, isGarageOrAdmin, async (req, res) => {
-  const categories = await Category.find();
-
-  res.render("product/add-product.ejs", { categories: categories });
-});
-
 router.post("/", isSignedIn, isGarageOrAdmin, async (req, res) => {
   const { name, price, imageUrl, categoryId } = req.body;
 
@@ -29,8 +23,12 @@ router.post("/", isSignedIn, isGarageOrAdmin, async (req, res) => {
 // View Routes
 router.get("/", isSignedIn, async (req, res) => {
   const allProducts = await Product.find().populate("owner categoryId");
+  const categories = await Category.find();
 
-  res.render("product/products-list.ejs", { products: allProducts });
+  res.render("product/products-list.ejs", {
+    products: allProducts,
+    categories: categories,
+  });
 });
 
 router.get("/my-products", isSignedIn, isGarageOrAdmin, async (req, res) => {

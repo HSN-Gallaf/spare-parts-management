@@ -586,3 +586,71 @@ nav {
     margin-top: 50px;
     font-size: 18px;
 }
+
+
+/* Add Product Modal */
+
+.product-modal {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.product-modal .modal-header {
+    background-color: #F4F7FF;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 20px 25px;
+}
+
+.product-modal .modal-title {
+    color: #1E3A5F;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.product-modal .modal-body {
+    padding: 25px;
+}
+
+.product-modal .form-label {
+    color: #1E3A5F;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.product-modal .form-control,
+.product-modal .form-select {
+    border: 1px solid #CBD5E1;
+    border-radius: 5px;
+    color: #1E3A5F;
+}
+
+.product-modal .form-control:focus,
+.product-modal .form-select:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+}
+
+.top-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.footer-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 15px 0 0;
+    border-top: 1px solid #E2E8F0;
+    margin-top: 20px;
+}
+
+.footer-btn button {
+    min-width: 100px;
+    padding: 9px 18px;
+    border-radius: 5px;
+}

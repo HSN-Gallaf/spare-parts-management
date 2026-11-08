@@ -29,9 +29,9 @@
                 </p>
             </div>
             <% if (user.role === 'admin' || user.role === 'garage') { %>
-                <a href="/products/new" class="btn btn-primary add-product-btn">
+                <button class="btn btn-primary add-product-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     + Add New Product
-                </a>
+                </button>
             <% } %>
         </div>
 
@@ -76,6 +76,9 @@
             <% } %>
         </div>
     </div>
+
+    <%- include('../partials/add-product') %>
+
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
