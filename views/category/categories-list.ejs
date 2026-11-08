@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -11,34 +13,94 @@
     />
 
     <link rel="stylesheet" href="/css/style.css" />
+
     <title>All Categories</title>
-  </head>
-  <body>
-    <h1>All Categories</h1>
-    <button
-          class="btn btn-primary add-category-btn"
-          data-bs-toggle="modal"
-          data-bs-target="#categoryModal"
-        >
-      + Add New Category
-    </button>
-    <ul>
-    <% for (let category of categories) { %>
-        <li>
-          <%=category.name  %>
-          <%=category.description  %>
-          <a href="/categories/<%=category._id %>">Edit Category</a>
-          
-          <form action="categories/<%= category._id %>?_method=DELETE" method="POST">
-              <button type="submit">Delete Category</button>
-          </form>
-        </li>
-    <% } %>
-    </ul>
+</head>
+
+<body>
+
+    <%- include('../partials/navbar') %>
+
+    <div class="category-container">
+
+        <div class="category-header">
+            <div>
+                <h1>Categories</h1>
+                <p>Manage your spare part categories.</p>
+            </div>
+
+            <button
+                class="btn btn-primary add-category-btn"
+                data-bs-toggle="modal"
+                data-bs-target="#categoryModal"
+            >
+                + Add New Category
+            </button>
+        </div>
+
+        <div class="category-table-container">
+            <table class="table category-table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% if (categories.length > 0) { %>
+                        <% for (let category of categories) { %>
+                            <tr>
+                                <th scope="row">1</th>
+
+                                <td><%= category.name %></td>
+
+                                <td><%= category.description %></td>
+
+                                <td>
+                                    <div class="category-actions">
+
+                                        <a
+                                            href="/categories/<%= category._id %>"
+                                            class="btn btn-primary"
+                                        >
+                                            Edit
+                                        </a>
+
+                                        <!-- <form
+                                            action="/categories/<%= category._id %>?_method=DELETE"
+                                            method="POST"
+                                        >
+                                            <button
+                                                type="submit"
+                                                class="btn btn-danger"
+                                            >
+                                                Delete
+                                            </button>
+                                        </form> -->
+
+                                    </div>
+                                </td>
+                            </tr>
+                        <% } %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="4" class="empty-categories">
+                                No categories available.
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 
     <%- include('../partials/add-category') %>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
 
-  </body>
+</body>
 </html>
