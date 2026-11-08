@@ -308,6 +308,7 @@ nav {
 .add-product-btn {
     text-decoration: none;
     white-space: nowrap;
+    padding: 10px 20px;
 }
 
 .product-card button {
@@ -409,6 +410,13 @@ nav {
     width: 100%;
     margin-bottom: 20px;
 }
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
 
 .my-products-header h1 {
     color: #1E3A5F;
@@ -457,8 +465,8 @@ nav {
 }
 
 .product-actions {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     width: 100%;
     gap: 10px;
     margin-top: auto;

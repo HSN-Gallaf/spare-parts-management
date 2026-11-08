@@ -44,10 +44,20 @@
                             alt="<%= product.name %>"
                         />
                         <h3><%= product.name %></h3>
+
+                        <p class="product-price">
+                            <%= product.price %>BD
+                        </p>
+
+                        <p class="product-category">
+                            Category:
+                            <%= product.categoryId.name %>
+                        </p>
+
                         <div class="product-actions">
 
                             <a href="/products/<%= product._id %>" class="btn btn-primary">
-                                Edit Product
+                                Edit
                             </a>
 
                             <form
@@ -58,7 +68,7 @@
                                     type="submit"
                                     class="btn btn-danger"
                                 >
-                                    Delete Product
+                                    Delete
                                 </button>
                             </form>
 

@@ -32,7 +32,9 @@ router.get("/", isSignedIn, async (req, res) => {
 });
 
 router.get("/my-products", isSignedIn, isGarageOrAdmin, async (req, res) => {
-  const myProducts = await Product.find({ owner: req.session.user._id });
+  const myProducts = await Product.find({
+    owner: req.session.user._id,
+  }).populate("categoryId");
 
   res.render("product/garage-products.ejs", { myProducts: myProducts });
 });
