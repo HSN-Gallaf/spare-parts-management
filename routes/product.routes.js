@@ -26,6 +26,8 @@ router.post(
     const { name, price, categoryId } = req.body;
     const imagePath = req.file ? req.file.filename : "";
 
+    req.session.successAddProductMsg = "Product Has Been Added Successfuly";
+
     await Product.create({
       name: name,
       price: price,
@@ -46,7 +48,9 @@ router.get("/", isSignedIn, async (req, res) => {
   res.render("product/products-list.ejs", {
     products: allProducts,
     categories: categories,
+    successAddProductMsg: req.session.successAddProductMsg,
   });
+  req.session.successAddProductMsg = null;
 });
 
 router.get("/my-products", isSignedIn, isGarageOrAdmin, async (req, res) => {
@@ -58,7 +62,11 @@ router.get("/my-products", isSignedIn, isGarageOrAdmin, async (req, res) => {
   res.render("product/garage-products.ejs", {
     myProducts: myProducts,
     categories: categories,
+    successDeleteMsg: req.session.successDeleteMsg,
+    successEditProductMsg: req.session.successEditProductMsg,
   });
+  req.session.successDeleteMsg = null;
+  req.session.successEditProductMsg = null;
 });
 
 // Edit Routes
@@ -85,17 +93,23 @@ router.put("/:productId", isSignedIn, isGarageOrAdmin, async (req, res) => {
     categoryId: categoryId,
   });
 
+  req.session.successEditProductMsg = "Product Has Been Edited Successfuly";
+
   res.redirect("/products/my-products");
 });
 
 router.delete("/:productId", isSignedIn, isGarageOrAdmin, async (req, res) => {
-  const foundProduct = await Product.findByIdAndDelete(req.params.productId);
+  const foundProduct = await Product.findById(req.params.productId);
 
   // >>>>>>>>>>Add delete the image from the folder<<<<<<<<<<<<<<
 
   if (!foundProduct.owner.equals(req.session.user._id)) {
     res.render("You are not allowed to delete this Product");
   }
+
+  await Product.findByIdAndDelete(req.params.productId);
+
+  req.session.successDeleteMsg = "Product deleted successfully!";
 
   res.redirect("/products/my-products");
 });

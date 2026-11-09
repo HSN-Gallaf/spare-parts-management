@@ -86,20 +86,10 @@
 
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script>
-        window.onload = function() {
-            Toastify({
-                text: "Spare Parts loaded successfully.",
-                duration: 2000, // 3 seconds
-                close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                style: {
-                    background: "linear-gradient(to right, #00b09b, #96c93d)",
-                }
-            }).showToast();
-        };
-    </script>
+
+    <!-- Add Toast -->
+    <% if (successAddProductMsg) { %>
+        <script src="/js/add-toast.js"></script>
+   <% }%>
 </body>
 </html>
