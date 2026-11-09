@@ -49,8 +49,10 @@ router.get("/", isSignedIn, async (req, res) => {
     products: allProducts,
     categories: categories,
     successAddProductMsg: req.session.successAddProductMsg,
+    successAddCartMsg: req.session.successAddCartMsg,
   });
   req.session.successAddProductMsg = null;
+  req.session.successAddCartMsg = null;
 });
 
 router.get("/my-products", isSignedIn, isGarageOrAdmin, async (req, res) => {

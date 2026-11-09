@@ -8,7 +8,12 @@ router.get("/", isSignedIn, async (req, res) => {
     owner: req.session.user._id,
   }).populate("cartProducts");
 
-  res.render("cart/cart-products.ejs", { cart: myCart });
+  res.render("cart/cart-products.ejs", {
+    cart: myCart,
+    successDeleteCartMsg: req.session.successDeleteCartMsg,
+  });
+
+  req.session.successDeleteCartMsg = null;
 });
 
 router.post("/:productId/add-to-cart", isSignedIn, async (req, res) => {
@@ -30,6 +35,8 @@ router.post("/:productId/add-to-cart", isSignedIn, async (req, res) => {
     $push: { cartProducts: req.params.productId },
   });
 
+  req.session.successAddCartMsg = "Product Has Been Added To Cart Successfuly";
+
   res.redirect("/products");
 });
 
@@ -43,6 +50,9 @@ router.delete("/:productId", isSignedIn, async (req, res) => {
   await Cart.findByIdAndUpdate(userCart._id, {
     $pull: { cartProducts: req.params.productId },
   });
+
+  req.session.successDeleteCartMsg =
+    "Product Has Been Delete From Cart Successfuly";
 
   res.redirect("/cart");
 });
