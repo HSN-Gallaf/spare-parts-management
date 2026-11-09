@@ -26,6 +26,10 @@ router.post("/sign-up", async (req, res) => {
       return res.send("Password and Confirm Password must match");
     }
 
+    if (req.body.password.length < 6 || req.body.confirmPassword.length < 6) {
+      return res.send("Password Need to be More than 6 charecters");
+    }
+
     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
     req.body.password = hashedPassword;
 
