@@ -234,6 +234,10 @@ nav {
     height: calc(100vh - 60px);
 }
 
+.hero-section a {
+    padding: 10px 20px;
+}
+
 .hero-content {
     color: white;
     width: 50%;
