@@ -1,7 +1,12 @@
-const router = require("express").Router()
+const router = require("express").Router();
 
+router.get("/", (req, res) => {
+  try {
+    res.render("homepage.ejs");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
-router.get('/',(req,res)=>{
-    res.render('homepage.ejs')
-})
 module.exports = router;
