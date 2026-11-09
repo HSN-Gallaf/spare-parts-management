@@ -226,7 +226,7 @@ nav {
         to left,
         rgba(15, 35, 65, 0.35),
         transparent
-    ), url('/main/hero-image.jpg');
+    ), url('/main/hero-section-img.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
