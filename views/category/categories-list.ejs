@@ -11,6 +11,7 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
         crossorigin="anonymous"
     />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <link rel="stylesheet" href="/css/style.css" />
 
@@ -101,6 +102,16 @@
     <%- include('../partials/add-category') %>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
+    <!-- Add Toast -->
+    <% if (successAddCategoryMsg) { %>
+        <script src="/js/add-toast.js"></script>
+   <% }%>
+
+   <!-- Edit Toast -->
+   <% if (successEditCategoryMsg) { %>
+        <script src="/js/edit-toast.js"></script>
+   <% }%>
 </body>
 </html>

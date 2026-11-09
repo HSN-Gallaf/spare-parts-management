@@ -12,13 +12,22 @@ router.post("/", isSignedIn, isAdmin, async (req, res) => {
     description: description,
   });
 
+  req.session.successAddCategoryMsg = "Category Has Been Added Successfuly";
+
   res.redirect("/categories");
 });
 
 router.get("/", isSignedIn, isAdmin, async (req, res) => {
   const allCategories = await Category.find();
 
-  res.render("category/categories-list.ejs", { categories: allCategories });
+  res.render("category/categories-list.ejs", {
+    categories: allCategories,
+    successEditCategoryMsg: req.session.successEditCategoryMsg,
+    successAddCategoryMsg: req.session.successAddCategoryMsg,
+  });
+
+  req.session.successEditCategoryMsg = null;
+  req.session.successAddCategoryMsg = null;
 });
 
 router.delete("/:categoryId", isSignedIn, isAdmin, async (req, res) => {
@@ -38,6 +47,8 @@ router.put("/:categoryId", isSignedIn, isAdmin, async (req, res) => {
     name: name,
     description: description,
   });
+
+  req.session.successEditCategoryMsg = "Category Has Been Edited Successfuly";
 
   res.redirect("/categories");
 });
