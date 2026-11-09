@@ -339,6 +339,10 @@ nav {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.product-card:hover {
+    animation: pulse 1s ease-in-out ;
+}
+
 .product-card img {
     width: 230px;
     height: 200px;
@@ -447,6 +451,10 @@ nav {
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(30, 58, 95, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.my-product-card:hover {
+    animation: pulse 1s ease-in-out ;
 }
 
 .my-product-card img {
@@ -558,6 +566,10 @@ nav {
     background-color: white;
     box-shadow: 0 3px 8px rgba(30, 58, 95, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart-card:hover {
+    animation: pulse 1s ease-in-out ;
 }
 
 .cart-card img {
