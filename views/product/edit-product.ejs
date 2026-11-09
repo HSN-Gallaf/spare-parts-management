@@ -27,7 +27,7 @@
                 <h1>Edit Spare Part</h1>
             </div>
             <div class="edit-product-body">
-                <form action="/products/<%= product._id %>?_method=PUT" method="POST">
+                <form action="/products/<%= product._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                     <div class="edit-top-inputs">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name:</label>
@@ -57,7 +57,7 @@
                             id="imageUrl"
                             type="file"
                             class="form-control"
-                            value="<%= product.imageUrl %>"
+                            value="/products/<%= product.imageUrl %>"
                         />
                     </div>
                     <div class="mb-3">

@@ -83,20 +83,35 @@ router.get("/:productId", isSignedIn, isGarageOrAdmin, async (req, res) => {
   });
 });
 
-router.put("/:productId", isSignedIn, isGarageOrAdmin, async (req, res) => {
-  const { name, price, imageUrl, categoryId } = req.body;
+router.put(
+  "/:productId",
+  isSignedIn,
+  isGarageOrAdmin,
+  upload.single("imageUrl"),
+  async (req, res) => {
+    const { name, price, categoryId } = req.body;
+    const imagePath = req.file ? req.file.filename : "";
 
-  await Product.findByIdAndUpdate(req.params.productId, {
-    name: name,
-    price: price,
-    imageUrl: imageUrl,
-    categoryId: categoryId,
-  });
+    if (imagePath) {
+      await Product.findByIdAndUpdate(req.params.productId, {
+        name: name,
+        price: price,
+        imageUrl: imagePath,
+        categoryId: categoryId,
+      });
+    } else {
+      await Product.findByIdAndUpdate(req.params.productId, {
+        name: name,
+        price: price,
+        categoryId: categoryId,
+      });
+    }
 
-  req.session.successEditProductMsg = "Product Has Been Edited Successfuly";
+    req.session.successEditProductMsg = "Product Has Been Edited Successfuly";
 
-  res.redirect("/products/my-products");
-});
+    res.redirect("/products/my-products");
+  },
+);
 
 router.delete("/:productId", isSignedIn, isGarageOrAdmin, async (req, res) => {
   const foundProduct = await Product.findById(req.params.productId);
