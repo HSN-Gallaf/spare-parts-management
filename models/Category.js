@@ -6,13 +6,13 @@ const categorySchema = mongoose.Schema(
       type: String,
       required: true,
       minLength: 3,
-      maxLength: 15,
+      maxLength: 30,
       unique: true,
     },
     description: {
       type: String,
       minLength: 7,
-      maxLength: 30,
+      maxLength: 100,
     },
   },
   {
